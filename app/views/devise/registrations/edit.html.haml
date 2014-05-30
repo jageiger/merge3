@@ -1,0 +1,29 @@
+%h2
+  Edit #{resource_name.to_s.humanize}
+= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-vertical' }) do |f|
+  = f.error_notification
+  = display_base_errors resource
+  = f.input :name, :autofocus => true
+  = f.input :email, :required => true
+  = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
+  = f.input :password_confirmation, :required => false
+  = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+  = f.button :submit, 'Update', :class => 'btn-primary'
+
+= google_authenticator_qrcode(resource)
+= form_for(resource, :as => resource_name, :url => [:refresh, resource_name, :displayqr], :html => {:method => :post}) do |f|
+  %p= f.submit I18n.t('newtoken', {:scope => 'devise.registration'})
+= form_for(resource, :as => resource_name, :url => [resource_name, :displayqr], :html => { :method => :put }) do |f|
+  = devise_error_messages!
+  %h3= I18n.t('nice_request', {:scope => 'devise.registration'})
+  %p
+    = f.label :gauth_enabled, I18n.t('qrstatus', {:scope => 'devise.registration'})
+    %br/
+    = f.check_box :gauth_enabled
+  %p= f.submit I18n.t('submit', {:scope => 'devise.registration'})
+
+
+%h3 Cancel my account
+%p
+  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+= link_to "Back", :back

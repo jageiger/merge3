@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @miner.name %>
+</p>
+
+<p>
+  <strong>Ip:</strong>
+  <%= @miner.ip %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @miner.state %>
+</p>
+
+<p>
+  <strong>Pool:</strong>
+  <%= @miner.pool_id %>
+</p>
+
+<%= link_to 'Edit', edit_miner_path(@miner) %> |
+<%= link_to 'See All Miners', miners_path %>

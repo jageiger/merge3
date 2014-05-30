@@ -1,0 +1,29 @@
+<div id="dashboard">
+  <div class="square-1 orange-square" id="rig_hashrate">
+    <h1 class="title" style="margin-top: 60px">Hashrate</h1>
+    <h2 class="value"></h2>
+    <h3 class="change-rate">
+      <span></span>
+    </h3>
+  </div>
+  <div class="square-1 cyan-square" id="btc_value">
+    <h1 class="title">Bitstamp</h1>
+    <h2 class="value bitstamp"></h2>
+    <h1 class="title">Bitcoin.de</h1>
+    <h2 class="value btcde"></h2>
+  </div>
+  <div class="square-1 purple-square" id="rig_overview">
+    <h1 class="title">Rig Overview</h1>
+    <ul class="list-nostyle"></ul>
+  </div>
+  <div class="square-1 blue-square" id="rig_pools">
+    <h1 class="title">Pools</h1>
+    <ul class="list-nostyle"></ul>
+    <div>
+      <%= link_to "Manage pools", pools_path %>
+    </div>
+    <div>
+      <%= link_to "Profit calculator", pools_path %>
+    </div>
+  </div>
+</div>

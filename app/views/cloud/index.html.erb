@@ -1,0 +1,25 @@
+<h1>NinjaColo</h1>
+<h2>Cloud Admin Interface</h2>
+
+<% if user_signed_in? %>
+
+<% unless current_user.admin? %>
+<p>We recommend that you configure your <%= link_to 'pools', pools_path %> first, yo.</p>
+<b><%= link_to 'Purchase Lease', lease_miners_path %></b>
+<% end %>
+
+
+<p><%= link_to 'Manage Pools', pools_path %></p>
+<p><%= link_to 'Edit Account', edit_user_registration_path %></p>
+
+<% if current_user.admin? %>
+<p><%= link_to 'Admin: Manage Miners', miners_path %></p>
+<% else %>
+<p><%= link_to 'View Miners', miners_path %></p>
+<% end %>
+<br>
+<p><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %>
+<% else %>
+<p><%= link_to 'Sign In', new_user_session_path %></p>
+<p><%= link_to 'Register', new_user_registration_path %></p>
+<% end %>

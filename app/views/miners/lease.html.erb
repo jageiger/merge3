@@ -1,0 +1,50 @@
+<h1>Select A Miner To Lease</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Ip</th>
+      <th>State</th>
+      <th>Purchase</th>
+<% if current_user.admin? %>
+	  <th>User</th>
+<% end %>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if current_user.admin? %>
+		<% @miners.each do |miner| %>
+	      <tr>
+	        <td><%= miner.name %></td>
+	        <td><%= miner.ip %></td>
+	        <td><%= miner.state %></td>
+	        <td><%= miner.pool_id %></td>
+	        <td><%= miner.user_id %></td>
+	        <td><%= link_to 'Show', miner %></td>
+	        <td><%= link_to 'Edit', edit_miner_path(miner) %></td>
+	        <td><%= link_to 'Destroy', miner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	      </tr>
+		<% end %>
+	  <% else %>
+		<% @miners.select{|t| t.state == 0}.each do |miner| %>
+	      <tr>
+	        <td><%= miner.name %></td>
+	        <td><%= miner.ip %></td>
+	        <td><%= miner.state %></td>
+	        <td><%= link_to "Assign", edit_miner_path(miner) %></td><%# there also needs to be a configure pool option for user, ALSO make <%= link_to miner.name, miner %CLOSE for the name display... It's cleaner looking. %>
+	      
+	
+	</tr>
+	    <% end %>
+	  <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if current_user.admin? %>
+<%= link_to 'New Miner', new_miner_path %>
+<% end %>
+<p><%= link_to 'Home', root_path %></p>

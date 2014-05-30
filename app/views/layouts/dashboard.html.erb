@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Rig Dashboard</title>
+    <%= stylesheet_link_tag    "dashboard", media: "all" %>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">/</link>
+	<!-- %meta{name: "single-rig", content: (action_name == "rig").to_s} -->
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+    <div class="link">
+      <%= @link %>
+    </div>
+    <%= javascript_include_tag "dashboard" %>
+  </body>
+</html>

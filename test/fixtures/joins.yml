@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  miner_id: 1
+  txid: MyString
+  lease_creation: 2014-05-23 11:46:34
+  lease_expiration: 2014-05-23 11:46:34
+
+two:
+  user_id: 1
+  miner_id: 1
+  txid: MyString
+  lease_creation: 2014-05-23 11:46:34
+  lease_expiration: 2014-05-23 11:46:34

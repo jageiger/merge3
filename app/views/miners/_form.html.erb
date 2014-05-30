@@ -1,0 +1,59 @@
+<%= form_for(@miner) do |f| %>
+  <% if @miner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@miner.errors.count, "error") %> prohibited this miner from being saved:</h2>
+
+      <ul>
+      <% @miner.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <% if current_user.admin? %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :ip %><br>
+    <%= f.text_field :ip %>
+  </div>
+<!-- 
+<div class="field">
+    <%= f.label :state %><br>
+    <%= f.number_field :state %>
+  </div>
+-->
+
+<% else %><%# or else if user_signed_in? %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :readonly => true %>
+  </div>
+  <div class="field">
+    <%= f.label :ip %><br>
+    <%= f.text_field :ip, :readonly => true %>
+  </div>
+
+
+<% end %>
+
+
+
+
+
+  <div class="field">
+	<%# Use an if statement... display all pools to admin (the code that I already have...) and else if (user_signed_in?) to display only the miners assigned to that user. Maybe the if statements have to be in the controller, because I'm manipulating @pools? %>
+	
+    <%= f.label :pool_id %><br>
+    <%= f.select :pool_id, options_from_collection_for_select(@pools, "id", "ip"),
+	:prompt => "Select from your created pools" %> <%# this displays all the pools to the user, instead of just their pools...%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
