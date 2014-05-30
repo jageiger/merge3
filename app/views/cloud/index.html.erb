@@ -2,7 +2,7 @@
 <h2>Cloud Admin Interface</h2>
 
 <% if user_signed_in? %>
-
+<p><%= link_to "Dashboard (It's a mess!)", dash_path %></p><br>
 <% unless current_user.admin? %>
 <p>We recommend that you configure your <%= link_to 'pools', pools_path %> first, yo.</p>
 <b><%= link_to 'Purchase Lease', lease_miners_path %></b>

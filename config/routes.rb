@@ -23,4 +23,5 @@ RailsDevisePundit::Application.routes.draw do
   get 'data' => 'home#data'
   
   # root to: "home#dashboard"
+  get 'dash' => 'home#dashboard'
 end
